@@ -22,7 +22,6 @@ Keep the C (Center) button pressed for these actions:
 4-Digit LED display:
 - If Center button is NOT pressed: Display current calculation line in hex [0x00..0xF0].
 - If Center button is pressed: Display current max_iters per pixel in hex [0x10..0xFFF].
-NOTE: While the Center button is pressed. 
 
 # SUPPORTED RESOLUTIONS
 - 320x240, RGB 4:4:4.
