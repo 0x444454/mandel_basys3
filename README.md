@@ -16,26 +16,28 @@ Use the "cross" buttons (U,D,L,R,C) on the Basys3 board.
 Keep the C (Center) button pressed for these actions:
 - Center + Up: Zoom in 2x.
 - Center + Down: Zoom out 2x.
-- Center + Left (S): Increase iterations.
-- Center + Right (D): Decrese iterations.
+- Center + Left: Increase iterations.
+- Center + Right: Decrese iterations.
 
 4-Digit LED display:
 - If Center button is NOT pressed: Display current calculation line in hex [0x00..0xF0].
-- If Center button is pressed: Display current max_iters per pixel in hex [0x10..0xFFF].
+- If Center button is pressed: Display current max_iters per pixel in hex [0x010..0xFFF].
 
 # SUPPORTED RESOLUTIONS
 - 320x240, RGB 4:4:4.
 
 NOTE: The limited amount of BRAM in the Basys3 (XC7A35T) only allows for a 320x240 (QVGA) framebuffer. We upscale it to output 640x480 VGA @ 60 Hz.
-NOTE: The coloring algorithm maps iterations to a palette of 256 colors. However, the framebuffer is RGB 4:4:4, so an enhanced version with a custom coloring algorithm can be easily implemented.
+NOTE: The simple coloring algorithm maps iterations using a palette of 256 colors. However, the framebuffer is RGB 4:4:4, so an enhanced version with a custom coloring algorithm can be implemented with up to 4096 simultanous colors on screen.
 
 # ALGORITHM
 
 ### Mandelbrot calculation
-This is a brute force algorithm using Q3.22 fixed-point precision.
-We don't need heuristic optimizations, as we can reach interactive rates also at the maximum 4095 iters/pixel.
-The hard work is done by the 15 Mandelbrot calculation engines working in parallel at 100 MHz.
-Each engine uses 6 DSP48E1 resources on the FPGA to calculate 1 Mandelbrot iteration per clock cycle. Aggregate computational power is 1.5 GigaIters/sec.
+
+This is a brute force algorithm using Q3.22 fixed-point precision.  
+We don't need heuristic optimizations, as we can reach interactive rates also at the maximum 4095 iters/pixel.  
+The dirty work is done by the **15 Mandelbrot calculation cores** working in parallel at 100 MHz.  
+Each core uses 6 DSP48E1 resources on the FPGA to calculate 1 Mandelbrot iteration per clock cycle. Aggregate computational power of all 15 cores (90 DSP) is 1.5 GigaIters/sec.  
+Each cycle, if a core has completed calculation, we write one pixel to the BRAM framebuffer and schedule calculation of new pixels to free cores.
 
 ### Note about fixed-point precision
 
@@ -48,7 +50,10 @@ Here is the maximum magnitude reached for each point during the calculation:
 
 ![screenshots](media/max_values.jpg)
 
-Q3.22 is the best compromise between max-zoom and speed for the Artix7 FPGA.
+Q3.22 (25 bits) is the best compromise between max-zoom and speed for the Artix7 FPGA.  
+We use 25-bit numbers to maximize usage of DSP48E1 resources in the Artix7.  
+Even if we use 25-bits number, we can check the Mandel exit condition on mult partials using more bits. This is unlikely many CPU mult implementations, and allows using only 3 bits (Q3) for the integral part of the calculation registers, and allocate more bits (22) to the fractional part for a deeper zoom.
+
 
 # LICENSE
 
