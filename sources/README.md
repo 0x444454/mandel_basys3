@@ -10,6 +10,7 @@ Open the ```mandel_b3.xpr``` project file.
 
 ## Build
 In the "Flow Navigator": "Program and Device" -> "Generate Bitstream".
+When done, Vivado will show the "Write Bitstream Complete" in the upper right corner of the UI.
 
 ## Run
 
