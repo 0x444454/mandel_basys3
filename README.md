@@ -1,7 +1,7 @@
 # mandel_basys3
 ## A fast (1.5 GigaIters/s) Mandelbrot generator for the Digilent Basys3 FPGA trainer board.
 
-![screenshots](media/mandel_b3-20221231.jpg)
+![screenshots](media/mandel_b3-20221231-small.jpg)
 
 # REQUIREMENTS
 
