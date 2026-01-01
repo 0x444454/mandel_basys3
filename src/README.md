@@ -15,7 +15,7 @@ In the "Flow Navigator": "Program and Device" -> "Generate Bitstream".
 
 Once the bitstream has been built, in the "Flow Navigator": "Program and Device" -> "Open Hardware Manager" -> "Program Device" -> [your board].  
 
-If "Program Device" is not active, check that the Basys3 USB drivers have been correctly installed.
+NOTE: If "Program Device" is not active, check that the Basys3 USB drivers have been correctly installed.
 
 # LICENSE
 
