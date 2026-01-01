@@ -39,7 +39,7 @@ This is a brute force algorithm using Q3.22 fixed-point precision.
 We don't need heuristic optimizations, as we can reach interactive rates also at the maximum 4095 iters/pixel.  
 The dirty work is done by the **15 Mandelbrot calculation cores** working in parallel at 100 MHz.  
 Each core uses 6 DSP48E1 resources on the FPGA to calculate 1 Mandelbrot iteration per clock cycle. Aggregate computational power of all 15 cores (90 DSP) is 1.5 GigaIters/sec.  
-Each cycle, if a core has completed calculation, we write one pixel to the BRAM framebuffer and schedule calculation of new pixels to free cores.
+Each cycle, if a core has completed calculation, we write one pixel to the BRAM framebuffer. We also schedule calculation of new pixels to free cores.
 
 ### Note about fixed-point precision
 
