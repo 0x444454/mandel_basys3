@@ -11,7 +11,7 @@
 # CONTROLS
 
 Use the "cross" buttons (U,D,L,R,C) on the Basys3 board.
-- Up,Down,Left,Right: Move around in complex plane.
+- Up, Down, Left, Right: Move around in complex plane.
 
 Keep the C (Center) button pressed for these actions:
 - Center + Up: Zoom in 2x.
