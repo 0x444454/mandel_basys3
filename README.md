@@ -60,7 +60,7 @@ Even if we use 25-bits number, we can perform the Mandel escape test on mult par
 
 This is on a Xilinx XC7A35T. Notice how we use all 90 (100%) DSP48E1 blocks and 80% BRAM, while other FPGA resources are mostly free. 
 
-![screenshots](media/mandel_b3-20221231-small.jpg)
+![screenshots](media/mandel_basys3-FPGA_summary.png)
 
 
 # LICENSE
