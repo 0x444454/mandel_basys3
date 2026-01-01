@@ -26,7 +26,7 @@ Keep the C (Center) button pressed for these actions:
 # SUPPORTED RESOLUTIONS
 - 320x240, RGB 4:4:4.
 
-NOTE: The limited amount of BRAM in the Basys3 (XC7A35T) only allows for a 320x240 (QVGA) framebuffer. We upscale it to output 640x480 VGA @ 60 Hz.
+NOTE: The limited amount of BRAM in the Basys3 (XC7A35T) only allows for a 320x240 (QVGA) framebuffer. We upscale it to output 640x480 VGA @ 60 Hz.  
 NOTE: The simple coloring algorithm maps iterations using a palette of 256 colors. However, the framebuffer is RGB 4:4:4, so an enhanced version with a custom coloring algorithm can be implemented with up to 4096 simultanous colors on screen.
 
 # ALGORITHM
