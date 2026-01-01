@@ -54,7 +54,7 @@ Here is the maximum magnitude reached for each point during the calculation:
 
 Q3.22 (25 bits) is the best compromise between max-zoom and speed for the Artix7 FPGA.  
 We use 25-bit numbers to maximize usage of DSP48E1 resources in the Artix7.  
-Even if we use 25-bits number, we can check the Mandel exit condition on mult partials using more bits. This is unlikely many CPU mult implementations, and allows using only 3 bits (Q3) for the integral part of the calculation registers, and allocate more bits (22) to the fractional part for a deeper zoom.
+Even if we use 25-bits number, we can perform the Mandel escape test on mult partials using more bits. This is unlikely many CPU mult implementations, and allows using only 3 bits (Q3) for the integral part of the calculation registers, and allocate more bits (22) to the fractional part for a deeper zoom.
 
 
 # LICENSE
